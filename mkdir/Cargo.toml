@@ -1,5 +1,5 @@
 [package]
-name = "cat"
+name = "mkdir"
 version = "0.1.0"
 authors = ["khigasa <kojihigasa@gmail.com>"]
 edition = "2018"
