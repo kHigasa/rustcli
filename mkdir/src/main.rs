@@ -54,8 +54,10 @@ fn main() {
             Err(e) => println!("{}", e),
         };
     } else {
-        print_usage(&program, opts);
-        return;
+        match create_dir(&path) {
+            Ok(_) => (),
+            Err(e) => println!("{}", e),
+        };
     };
 }
 
