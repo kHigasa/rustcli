@@ -1,10 +1,15 @@
 extern crate getopts;
+
 use getopts::Options;
 use std::env;
 
 fn print_usage(program: &str, opts: Options) {
     let brief = format!("Usage: {} [OPTION]... [FILE]...", program);
     print!("{}", opts.usage(&brief));
+}
+
+fn echo(input: &str) {
+    print!("{}\n", input);
 }
 
 fn main() {
@@ -19,12 +24,12 @@ fn main() {
         Ok(m) => { m }
         Err(f) => { panic!(f.to_string()) }
     };
-    if !matches.free.is_empty() {
+    let input = if !matches.free.is_empty() {
         matches.free[0].clone();
     } else {
         print_usage(&program, opts);
-        return
-    }
+        return;
+    };
     if matches.opt_present("h") {
         print_usage(&program, opts);
         return;
@@ -33,6 +38,7 @@ fn main() {
     } else if matches.opt_present("e") {
         return;
     } else {
+        echo(&input);
         return;
     }
 }
